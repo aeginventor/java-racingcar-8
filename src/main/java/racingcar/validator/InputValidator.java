@@ -18,6 +18,8 @@ public class InputValidator {
 
     private static final String NAME_DUPLICATE_ERROR = "자동차 이름은 중복될 수 없습니다.";
 
+    private static final String RAW_INPUT_EMPTY_ERROR = "입력값이 비어있습니다.";
+
     // private 생성자로 객체 생성 방지
     private InputValidator() {
     }
@@ -63,6 +65,12 @@ public class InputValidator {
     private static void validateMinimumTryCount(int tryCount) {
         if (tryCount < MINIMUM_TRY_COUNT) {
             throw new IllegalArgumentException(ERROR_LESS_THAN_MINIMUM);
+        }
+    }
+
+    public static void validateRawCarNames(String rawNames) {
+        if (rawNames == null || rawNames.isBlank()) {
+            throw new IllegalArgumentException(RAW_INPUT_EMPTY_ERROR);
         }
     }
 }

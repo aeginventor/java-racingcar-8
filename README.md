@@ -6,6 +6,7 @@
   - [x] "시도할 횟수는 몇 회인가요?" 문구 출력
   - [x] 시도 횟수 문자열(`String`) 입력 받기
 - [x] **유효성 검증 (Validator)**
+  - [x] [예외] 분리하기 전의 원본(raw) 이름 문자열이 비어있는 경우 IllegalArgumentException 발생
   - [x] [예외] 자동차 이름 문자열을 쉼표(,)로 분리 시, 이름이 5자를 초과하는 경우 `IllegalArgumentException` 발생
   - [x] [예외] 분리된 이름이 비어있거나 공백인 경우 (e.g., "pobi,,jun") `IllegalArgumentException` 발생
   - [x] [예외] 시도 횟수 문자열이 숫자가 아닌 경우 `IllegalArgumentException` 발생

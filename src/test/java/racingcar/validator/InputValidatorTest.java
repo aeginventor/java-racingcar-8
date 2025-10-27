@@ -10,6 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class InputValidatorTest {
 
@@ -87,5 +88,23 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validateCarNames(duplicateNames))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+    }
+
+    @DisplayName("자동차 이름 원본(raw) 문자열이 비어있으면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "   ", " \t \n"}) // 빈 값, 공백, 탭/개행 포함
+    void validateRawCarNamesBlank(String rawNames) {
+        // when & then
+        assertThatThrownBy(() -> InputValidator.validateRawCarNames(rawNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값이 비어있습니다.");
+    }
+
+    @DisplayName("자동차 이름 원본(raw) 문자열이 비어있지 않으면 통과한다.")
+    @Test
+    void validateRawCarNamesIsNormal() {
+        // when & then
+        // 예외가 발생하지 않아야 함
+        assertDoesNotThrow(() -> InputValidator.validateRawCarNames("pobi,woni"));
     }
 }

@@ -61,4 +61,32 @@ class CarTest {
         assertThat(car.getPosition()).isZero(); // 0에서 변하지 않음
     }
 
+    @Test
+    @DisplayName("position이 3일 때 하이픈(-) 3개를 반환한다.")
+    void getPositionDisplayWhenPositionIsThree() {
+        // given
+        Car car = new Car("pobi");
+        car.move(4); // position 1
+        car.move(4); // position 2
+        car.move(4); // position 3
+
+        // when
+        String positionDisplay = car.getPositionDisplay();
+
+        // then
+        assertThat(positionDisplay).isEqualTo("---");
+    }
+
+    @Test
+    @DisplayName("position이 0일 때 빈 문자열(\"\")을 반환한다.")
+    void getPositionDisplayWhenPositionIsZero() {
+        // given
+        Car car = new Car("pobi"); // position 0
+
+        // when
+        String positionDisplay = car.getPositionDisplay();
+
+        // then
+        assertThat(positionDisplay).isEqualTo("");
+    }
 }

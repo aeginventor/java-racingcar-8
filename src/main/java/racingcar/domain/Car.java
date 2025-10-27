@@ -1,8 +1,8 @@
 package racingcar.domain;
 
 public class Car {
-    // 1주차 피드백: '매직 넘버'를 의미 있는 상수로 변경
     private static final int MOVE_CONDITION_THRESHOLD = 4;
+    private static final String POSITION_VISUAL = "-";
 
     private final String name;
     private int position;
@@ -24,5 +24,9 @@ public class Car {
         if (randomNumber >= MOVE_CONDITION_THRESHOLD) {
             this.position++;
         }
+    }
+
+    public String getPositionDisplay() {
+        return POSITION_VISUAL.repeat(this.position);
     }
 }

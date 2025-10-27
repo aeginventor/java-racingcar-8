@@ -6,8 +6,9 @@ import racingcar.validator.InputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GameController {
 
@@ -38,11 +39,9 @@ public class GameController {
     private List<String> getCarNames() {
         String carNamesInput = inputView.readCarNames();
 
-        String[] carNameArray = carNamesInput.split(",");
-        List<String> carNames = new ArrayList<>();
-        for (String name : carNameArray) {
-            carNames.add(name.trim());
-        }
+        List<String> carNames = Stream.of(carNamesInput.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
 
         InputValidator.validateCarNames(carNames);
         return carNames;

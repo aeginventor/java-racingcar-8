@@ -31,6 +31,7 @@ public class GameController {
 
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
+            throw e;
         }
     }
 

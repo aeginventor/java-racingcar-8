@@ -11,6 +11,7 @@
   - [x] [예외] 분리된 이름이 비어있거나 공백인 경우 (e.g., "pobi,,jun") `IllegalArgumentException` 발생
   - [x] [예외] 시도 횟수 문자열이 숫자가 아닌 경우 `IllegalArgumentException` 발생
   - [x] [예외] 시도 횟수가 1 미만의 정수인 경우 `IllegalArgumentException` 발생
+  - [x] [예외] 시도 횟수가 int 범위를 벗어난 경우 IllegalArgumentException 발생
   - [x] [예외] 자동차 이름이 중복되는 경우 IllegalArgumentException 발생
 - [x] **도메인 (Car)**
   - [x] 자동차(Car) 객체는 이름(name)과 위치(position)를 보유

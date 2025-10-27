@@ -107,4 +107,14 @@ class InputValidatorTest {
         // 예외가 발생하지 않아야 함
         assertDoesNotThrow(() -> InputValidator.validateRawCarNames("pobi,woni"));
     }
+
+    @DisplayName("시도 횟수가 int 범위를 벗어나면 특정 예외 메시지를 발생시킨다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"2147483648", "-2147483649", "9999999999999999"})
+    void validateTryCountIntOverRange(String largeNumberInput) {
+        // when & then
+        assertThatThrownBy(() -> InputValidator.validateTryCount(largeNumberInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("시도 횟수가 int 범위를 벗어났습니다.");
+    }
 }

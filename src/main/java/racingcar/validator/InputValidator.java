@@ -13,12 +13,14 @@ public class InputValidator {
     private static final String ERROR_NAME_BLANK = "자동차 이름은 공백이거나 비어있을 수 없습니다.";
 
     private static final int MINIMUM_TRY_COUNT = 1;
-    private static final String ERROR_NOT_NUMERIC = "시도 횟수는 숫자여야 합니다.";
+    private static final String ERROR_NOT_NUMERIC = "시도 횟수는 숫자햣여야 합니다.";
     private static final String ERROR_LESS_THAN_MINIMUM = "시도 횟수는 " + MINIMUM_TRY_COUNT + " 이상이어야 합니다.";
 
     private static final String NAME_DUPLICATE_ERROR = "자동차 이름은 중복될 수 없습니다.";
 
     private static final String RAW_INPUT_EMPTY_ERROR = "입력값이 비어있습니다.";
+
+    private static final String NUMBER_OUT_OF_RANGE_ERROR = "시도 횟수가 int 범위를 벗어났습니다.";
 
     // private 생성자로 객체 생성 방지
     private InputValidator() {
@@ -56,7 +58,11 @@ public class InputValidator {
 
     private static int parseInteger(String input) {
         try {
-            return Integer.parseInt(input);
+            long longValue = Long.parseLong(input);
+            if (longValue > Integer.MAX_VALUE || longValue < Integer.MIN_VALUE) {
+                throw new IllegalArgumentException(NUMBER_OUT_OF_RANGE_ERROR);
+            }
+            return (int) longValue;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_NOT_NUMERIC);
         }

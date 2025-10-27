@@ -33,4 +33,32 @@ class CarTest {
         assertThat(position).isZero();
     }
 
+    @Test
+    @DisplayName("전진 조건(4 이상)을 만족하면 position이 1 증가한다.")
+    void moveCarWhenConditionMet() {
+        // given
+        Car car = new Car("pobi");
+        int forwardConditionValue = 4;
+
+        // when
+        car.move(forwardConditionValue);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("멈춤 조건(3 이하)을 만족하면 position이 변하지 않는다.")
+    void stopCarWhenConditionNotMet() {
+        // given
+        Car car = new Car("pobi");
+        int stopConditionValue = 3;
+
+        // when
+        car.move(stopConditionValue);
+
+        // then
+        assertThat(car.getPosition()).isZero(); // 0에서 변하지 않음
+    }
+
 }

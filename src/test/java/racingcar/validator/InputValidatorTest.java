@@ -28,7 +28,7 @@ class InputValidatorTest {
         List<String> invalidNames = List.of("pobi", " ", "");
         assertThatThrownBy(() -> InputValidator.validateCarNames(invalidNames))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR] 자동차 이름은 공백일 수 없습니다.");
+                .hasMessageContaining("[ERROR] 자동차 이름은 공백이거나 비어있을 수 없습니다.");
     }
 
     @Test

@@ -1,6 +1,7 @@
 package racingcar.validator;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class InputValidator {
 
@@ -19,19 +20,22 @@ public class InputValidator {
     private InputValidator() {
     }
 
-    public static void validateCarNames(String carNamesInput) {
-        String[] names = carNamesInput.split(COMMA_DELIMITER, -1);
-
-        Arrays.stream(names)
-                .forEach(InputValidator::validateSingleCarName);
+    public static void validateCarNames(List<String> carNames) {
+        for (String name : carNames) {
+            validateNameLength(name);
+            validateNameIsBlank(name);
+        }
     }
 
-    private static void validateSingleCarName(String name) {
-        if (name.isBlank()) {
-            throw new IllegalArgumentException(ERROR_NAME_BLANK);
-        }
+    private static void validateNameLength(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(ERROR_NAME_LENGTH);
+            throw new IllegalArgumentException(ERROR_PREFIX + ERROR_NAME_LENGTH);
+        }
+    }
+
+    private static void validateNameIsBlank(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException(ERROR_PREFIX + ERROR_NAME_BLANK);
         }
     }
 

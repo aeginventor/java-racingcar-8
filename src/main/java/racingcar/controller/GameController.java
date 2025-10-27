@@ -37,9 +37,10 @@ public class GameController {
     }
 
     private List<String> getCarNames() {
-        String carNamesInput = inputView.readCarNames();
+        String rawNames = inputView.readCarNames();
+        InputValidator.validateRawCarNames(rawNames);
 
-        List<String> carNames = Stream.of(carNamesInput.split(","))
+        List<String> carNames = Stream.of(rawNames.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
 

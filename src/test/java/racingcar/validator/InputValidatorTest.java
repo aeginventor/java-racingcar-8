@@ -76,4 +76,16 @@ class InputValidatorTest {
         // 예외가 발생하지 않으면서, 정확한 int 값이 반환되었는지 검증
         assertThat(tryCount).isEqualTo(5);
     }
+
+    @DisplayName("자동차 이름이 중복되면 예외가 발생한다.")
+    @Test
+    void validateCarNamesDuplicated() {
+        // given
+        List<String> duplicateNames = List.of("pobi", "woni", "pobi");
+
+        // when & then
+        assertThatThrownBy(() -> InputValidator.validateCarNames(duplicateNames))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
+    }
 }

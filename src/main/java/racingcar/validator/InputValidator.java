@@ -1,7 +1,9 @@
 package racingcar.validator;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputValidator {
 
@@ -14,11 +16,18 @@ public class InputValidator {
     private static final String ERROR_NOT_NUMERIC = "시도 횟수는 숫자여야 합니다.";
     private static final String ERROR_LESS_THAN_MINIMUM = "시도 횟수는 " + MINIMUM_TRY_COUNT + " 이상이어야 합니다.";
 
+    private static final String NAME_DUPLICATE_ERROR = "자동차 이름은 중복될 수 없습니다.";
+
     // private 생성자로 객체 생성 방지
     private InputValidator() {
     }
 
     public static void validateCarNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>(carNames);
+        if (uniqueNames.size() != carNames.size()) {
+            throw new IllegalArgumentException(NAME_DUPLICATE_ERROR);
+        }
+
         for (String name : carNames) {
             validateNameLength(name);
             validateNameIsBlank(name);

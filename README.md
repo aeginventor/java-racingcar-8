@@ -1,40 +1,40 @@
 ### 2주차 자동차 경주 기능 목록
 
-- [ ] **입력 기능 (InputView)**
-  - [ ] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)" 문구 출력
-  - [ ] 자동차 이름 문자열(`String`) 입력 받기
-  - [ ] "시도할 횟수는 몇 회인가요?" 문구 출력
-  - [ ] 시도 횟수 문자열(`String`) 입력 받기
-- [ ] **유효성 검증 (Validator)**
-  - [ ] [예외] 자동차 이름 문자열을 쉼표(,)로 분리 시, 이름이 5자를 초과하는 경우 `IllegalArgumentException` 발생
-  - [ ] [예외] 분리된 이름이 비어있거나 공백인 경우 (e.g., "pobi,,jun") `IllegalArgumentException` 발생
-  - [ ] [예외] 시도 횟수 문자열이 숫자가 아닌 경우 `IllegalArgumentException` 발생
-  - [ ] [예외] 시도 횟수가 1 미만의 정수인 경우 `IllegalArgumentException` 발생
-- [ ] **도메인 (Car)**
-  - [ ] 자동차(Car) 객체는 이름(name)과 위치(position)를 보유
-  - [ ] Car는 0~9 사이 값을 받아 4 이상일 경우 전진(position 1 증가)
-  - [ ] Car는 3 이하일 경우 멈춤
-  - [ ] Car는 현재 `position`을 하이픈(`-`) 문자열로 변환 (e.g., `3` -> `---`)
-- [ ] **도메인 (RacingGame)**
-  - [ ] RacingGame은 이름 목록(`List<String>`)으로 여러 Car 객체를 생성
-  - [ ] RacingGame은 모든 Car에게 랜덤 값을 부여하여 1회 경주(raceOneRound)를 실행
-  - [ ] RacingGame은 현재 Car 목록을 반환
-  - [ ] RacingGame은 가장 많이 전진한 자동차의 위치(max position) 탐색
-  - [ ] RacingGame은 max position과 동일한 위치를 가진 모든 자동차(우승자)를 선정
-- [ ] **출력 기능 (OutputView)**
-  - [ ] "실행 결과" 문구 출력
-  - [ ] 각 라운드별로 모든 자동차의 이름과 변환된 위치 문자열을 출력 (e.g., `pobi : ---`)
-  - [ ] 최종 우승자를 `최종 우승자 : pobi` 형식으로 출력 (단독 우승)
-  - [ ] 최종 우승자를 `최종 우승자 : pobi, jun` 형식으로 출력 (공동 우승, `String.join` 활용)
-  - [ ] `[ERROR]` 문구와 함께 예외 메시지 출력
-- [ ] **흐름 제어 (Controller)**
-  - [ ] `InputView`로부터 자동차 이름 문자열과 시도 횟수 문자열을 입력 받음
-  - [ ] 입력값을 `Validator`를 통해 검증 및 변환
-  - [ ] `RacingGame` 객체 생성
-  - [ ] `OutputView`에 "실행 결과" 출력 요청
-  - [ ] 시도 횟수(tryCount)만큼 **`for` 루프를 실행**
-    - [ ] `racingGame.raceOneRound()` 호출
-    - [ ] `racingGame`에서 Car 목록을 받아 `OutputView`에 라운드 결과 출력 요청
-  - [ ] `racingGame.findWinners()` 호출
-  - [ ] `OutputView`에 최종 우승자 출력 요청
-  - [ ] 모든 로직을 `try-catch`로 감싸 예외 발생 시 `OutputView`에 에러 출력 요청
+- [x] **입력 기능 (InputView)**
+  - [x] "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)" 문구 출력
+  - [x] 자동차 이름 문자열(`String`) 입력 받기
+  - [x] "시도할 횟수는 몇 회인가요?" 문구 출력
+  - [x] 시도 횟수 문자열(`String`) 입력 받기
+- [x] **유효성 검증 (Validator)**
+  - [x] [예외] 자동차 이름 문자열을 쉼표(,)로 분리 시, 이름이 5자를 초과하는 경우 `IllegalArgumentException` 발생
+  - [x] [예외] 분리된 이름이 비어있거나 공백인 경우 (e.g., "pobi,,jun") `IllegalArgumentException` 발생
+  - [x] [예외] 시도 횟수 문자열이 숫자가 아닌 경우 `IllegalArgumentException` 발생
+  - [x] [예외] 시도 횟수가 1 미만의 정수인 경우 `IllegalArgumentException` 발생
+- [x] **도메인 (Car)**
+  - [x] 자동차(Car) 객체는 이름(name)과 위치(position)를 보유
+  - [x] Car는 0~9 사이 값을 받아 4 이상일 경우 전진(position 1 증가)
+  - [x] Car는 3 이하일 경우 멈춤
+  - [x] Car는 현재 `position`을 하이픈(`-`) 문자열로 변환 (e.g., `3` -> `---`)
+- [x] **도메인 (RacingGame)**
+  - [x] RacingGame은 이름 목록(`List<String>`)으로 여러 Car 객체를 생성
+  - [x] RacingGame은 모든 Car에게 랜덤 값을 부여하여 1회 경주(raceOneRound)를 실행
+  - [x] RacingGame은 현재 Car 목록을 반환
+  - [x] RacingGame은 가장 많이 전진한 자동차의 위치(max position) 탐색
+  - [x] RacingGame은 max position과 동일한 위치를 가진 모든 자동차(우승자)를 선정
+- [x] **출력 기능 (OutputView)**
+  - [x] "실행 결과" 문구 출력
+  - [x] 각 라운드별로 모든 자동차의 이름과 변환된 위치 문자열을 출력 (e.g., `pobi : ---`)
+  - [x] 최종 우승자를 `최종 우승자 : pobi` 형식으로 출력 (단독 우승)
+  - [x] 최종 우승자를 `최종 우승자 : pobi, jun` 형식으로 출력 (공동 우승, `String.join` 활용)
+  - [x] `[ERROR]` 문구와 함께 예외 메시지 출력
+- [x] **흐름 제어 (Controller)**
+  - [x] `InputView`로부터 자동차 이름 문자열과 시도 횟수 문자열을 입력 받음
+  - [x] 입력값을 `Validator`를 통해 검증 및 변환
+  - [x] `RacingGame` 객체 생성
+  - [x] `OutputView`에 "실행 결과" 출력 요청
+  - [x] 시도 횟수(tryCount)만큼 **`for` 루프를 실행**
+    - [x] `racingGame.raceOneRound()` 호출
+    - [x] `racingGame`에서 Car 목록을 받아 `OutputView`에 라운드 결과 출력 요청
+  - [x] `racingGame.findWinners()` 호출
+  - [x] `OutputView`에 최종 우승자 출력 요청
+  - [x] 모든 로직을 `try-catch`로 감싸 예외 발생 시 `OutputView`에 에러 출력 요청
